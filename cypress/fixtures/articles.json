@@ -1,0 +1,14 @@
+{
+    "articles": [
+        {
+            "id": 1,
+            "title": "Understanding Cypress",
+            "content": "Cypress is a powerful testing framework..."
+        },
+        {
+            "id": 2,
+            "title": "API Testing with Cypress",
+            "content": "Cypress makes API testing simple..."
+        }
+    ]
+}
