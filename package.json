@@ -1,4 +1,10 @@
 {
+  "name:": "cypress-api",
+  "scripts": {
+    "test": "cypress open",
+    "cy_run_dev": "npx cypress open --env username=test@example.com,password=password234",
+    "cy_run_prod": "npx cypress open --env username=$USERNAME,password=$PASSWORD"
+  },
   "devDependencies": {
     "cypress": "^15.10.0"
   }

@@ -4,7 +4,7 @@
 it.only('create and delete article', () => {
     cy.request({
         method: 'POST',
-        url: 'https://api.example.com/api/users/login',
+        url: Cypress.env('apiUrl') + '/api/users/login',
         body: {
             user: {
                 email: "test@example.com",
@@ -17,7 +17,7 @@ it.only('create and delete article', () => {
 
         cy.request({
             method: 'POST',
-            url: 'https://api.example.com/api/articles',
+            url: Cypress.env('apiUrl') + '/api/articles',
             headers: {
                 Authorization: token
             },

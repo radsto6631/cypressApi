@@ -30,8 +30,8 @@ Cypress.Commands.add('loginToApplication', () => {
         url: 'https://api.example.com/api/users/login',
         body: {
             user: {
-                email: "test@example.com",
-                password: "password234"
+                email: Cypress.env("username"),
+                password: Cypress.env("password")
             }
         }
     }).then((response) => {

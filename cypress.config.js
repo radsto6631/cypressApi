@@ -2,11 +2,17 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   allowCypressEnv: false,
-
+  env: {
+    username: "test@example.com",
+    password: "password234",
+    apiUrl: "https://api.example.com"
+  },        
   e2e: {
     baseUrl: "http://localhost:5173",
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      config.env.username = process.env.USERNAME,
+      config.env.password = process.env.PASSWORD
+      return config;
     },
   },
   viewportWidth: 1280,
