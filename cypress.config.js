@@ -14,6 +14,10 @@ module.exports = defineConfig({
       config.env.password = process.env.PASSWORD
       return config;
     },
+    retries: {
+      openMode: 0,
+      runMode: 2
+    }
   },
   viewportWidth: 1280,
   viewportHeight: 720,

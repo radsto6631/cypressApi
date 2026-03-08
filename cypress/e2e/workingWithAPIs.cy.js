@@ -18,7 +18,7 @@ it("first API test", () => {
     cy.get('button[type="submit"]').click();
 });
 
-it("modify API response", () => {
+it("modify API response", {retries: 2}, () => {
 
     cy.intercept("GET", "https://api.example.com/api/tags", (req) => {
         req.continue(res => {
