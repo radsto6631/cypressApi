@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+import { faker } from '@faker-js/faker';
 
 //before using token from commands.js
 it.only('create and delete article', () => {
@@ -57,6 +58,7 @@ it.only('create and delete article', () => {
 //after using token from commands.js
 
 it.only('create and delete article using token', () => {
+    const articleTitle = faker.person.fullName;
     cy.loginToApplication();
 
     cy.get("@token").then(token => {
@@ -66,23 +68,23 @@ it.only('create and delete article using token', () => {
             headers: {'Authorization': token},
             body: {
                 article: {
-                    title: "Test article",
-                    description: "Description of test article",
-                    body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+                    title: articleTitle,
+                    description: faker.person.jobTitle(),
+                    body: faker.lorem.paragraph(),
                     tagList: ["test", "cypress"]
                 }
             }
         }).then(response => {
             expect(response.status).to.eq(201);
-            expect(response.body.article.title).to.eq("Test article");
+            expect(response.body.article.title).to.eq(articleTitle);
         })
 
-    cy.contains('Test article').click();
+    cy.contains(articleTitle).click();
     cy.intercept("GET", "**/articles*").as("getArticlesCall");
     cy.contains('button', 'Delete Article').click();
 
     cy.wait("@getArticlesCall");
-    cy.get('app-article-list').should('not.contain', 'Test article');
+    cy.get('app-article-list').should('not.contain', articleTitle);
 
     })
 })
